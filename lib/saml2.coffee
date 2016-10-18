@@ -82,9 +82,10 @@ create_metadata = (entity_id, assert_endpoint, signing_certificates, encryption_
             '@Binding': 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect'
             '@Location': assert_endpoint
           'md:AssertionConsumerService':
-            '@Binding': 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST'
+            '@Binding': 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact'
             '@Location': assert_endpoint
-            '@index': '0'
+            '@index': '0',
+            '@isDefault': true
         ]
   .end()
 
