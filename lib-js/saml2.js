@@ -141,9 +141,10 @@ create_metadata = function(entity_id, assert_endpoint, signing_certificates, enc
             '@Location': assert_endpoint
           },
           'md:AssertionConsumerService': {
-            '@Binding': 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
+            '@Binding': 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
             '@Location': assert_endpoint,
-            '@index': '0'
+            '@index': '0',
+            '@isDefault': true
           }
         }
       ])
