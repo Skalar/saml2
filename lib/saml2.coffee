@@ -89,6 +89,21 @@ create_metadata = (entity_id, assert_endpoint, signing_certificates, encryption_
         ]
   .end()
 
+createArtifactResolve = (entity_id) ->
+  xmlbuilder.create
+    'saml2p:ArtifactResolve':
+      '@xmlns:saml2p': 'urn:oasis:names:tc:SAML:2.0:protocol'
+      '@ID': '_' + crypto.randomBytes( 21 ).toString( 'hex' )
+      '@IssueInstant': (new Date()).toISOString()
+      '@Version': '2.0'
+      'saml2:Issuer': []
+        .concat {'@xmlns:saml2': 'urn:oasis:names:tc:SAML:2.0:assertion'}
+        .concat entity_id
+      'ds:Signature': []
+        .concat {'@xmlns:ds': 'http://www.w3.org/2000/09/xmldsig#'}
+        .concat 'ds:SignedInfo'
+  .end()
+
 # Creates a LogoutRequest and returns it as a string of xml.
 create_logout_request = (issuer, name_id, session_index, destination) ->
   id = '_' + crypto.randomBytes( 21 ).toString( 'hex' )
